@@ -1,0 +1,3 @@
+To run frontend: npm start
+To get accounts: npx hardhat node
+To deploy contract: npx hardhat run --network localhost scripts/deploy.js
