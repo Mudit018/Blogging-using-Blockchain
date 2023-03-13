@@ -1,4 +1,4 @@
-import { React, useContext } from 'react'
+import { React, useContext, useEffect } from 'react'
 import "./ProfilePage.css"
 import { AppContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
@@ -8,13 +8,18 @@ import MyBlogs from '../../components/MyBlogs/MyBlogs';
 const ProfilePage = () => {
 
   const navigate = useNavigate();
-  const { account, createBlog } = useContext(AppContext);
+  const { account, setAccount, createBlog } = useContext(AppContext);
   // console.log(account);
 
-  if(account === "" || !account) {
-    navigate('/');
-    window.location.replace("/");
-  }
+  useEffect(() => {
+    console.log(localStorage.getItem("account"));
+    if (localStorage.getItem("account")) {
+      setAccount(localStorage.getItem("account"));
+    } else {
+      navigate("/");
+      window.location.replace("/");
+    }
+  }, []);
 
   return (
     <div className="ProfilePage">

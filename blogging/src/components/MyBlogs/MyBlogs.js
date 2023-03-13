@@ -13,6 +13,7 @@ const MyBlogs = () => {
             const myAllBlogs = await getUploadedBlogsByUser(account);
             console.log(myAllBlogs);
             setMyBlogs(myAllBlogs);
+            // console.log(JSON.parse(localStorage.getItem(("allblogs"))));
         }
         getMyBlogs();
     }, [])

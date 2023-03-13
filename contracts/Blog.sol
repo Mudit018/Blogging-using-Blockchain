@@ -6,7 +6,7 @@ contract Blog {
     uint public blogId;
     address public blogAuthor;
     string public blogTitle;
-    string public blogTag;
+    string[] public blogTag;
     string public blogTimeStamp;
     string public blogContent;
     string public blogImgHash;
@@ -28,7 +28,7 @@ contract Blog {
         uint _blogId,
         string memory _blogTitle,
         address _blogAuthor,
-        string memory _blogTag,
+        string[] memory _blogTag,
         string memory _blogTimestamp,
         string memory _blogContent,
         string memory _blogImgHash
@@ -70,7 +70,7 @@ contract Blog {
             uint,
             address,
             string memory,
-            string memory,
+            string[] memory,
             string memory,
             string memory,
             string memory,

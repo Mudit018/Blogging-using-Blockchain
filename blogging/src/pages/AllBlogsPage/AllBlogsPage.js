@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/context';
 import Navbar from '../../components/navbar/Navbar';
 import "./AllBlogsPage.css";
@@ -9,19 +9,25 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 const AllBlogsPage = () => {
 
     const navigate = useNavigate();
-    const { account, getAllBlogs } = useContext(AppContext);
+    const { account, setAccount, getAllBlogs } = useContext(AppContext);
     const [allBlogs, setAllBlogs] = useState([]);
     // console.log(account);
     
-    if (account === "" || !account) {
+    useEffect(() => {
+      console.log(localStorage.getItem("account"));
+      if (localStorage.getItem("account")) {
+        setAccount(localStorage.getItem("account"));
+      } else {
         navigate("/");
         window.location.replace("/");
-    }
+      }
+    }, []);
 
     const handleClick = async () => {
         const data = await getAllBlogs();
         console.log(data);
-        setAllBlogs(data);
+        await setAllBlogs(data);
+        localStorage.setItem("allblogs", JSON.stringify(data));
     }
     
     return (

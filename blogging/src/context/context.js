@@ -19,15 +19,17 @@ const Context = ({children}) => {
             return;
 
         try {
-            const data = await contract.createBlog(blog.title, blog.tag, Date.now().toString(), blog.content, blog.imgHash);
+            const tagArr = blog.tag.split(",").map((tag) => (tag.trim()));  
+            console.log(tagArr);
+            const data = await contract.createBlog(blog?.title, tagArr, Date.now().toString(), blog?.content, blog?.imgHash);
             console.log(data);
-            
-            const blogArray = await contract.getUploadedBlogs(); 
+            const blogArray = await contract.getUploadedBlogs();
             console.log(blogArray);
             let contractAddress = blogArray[blogArray.length - 1];
             const newContract = new ethers.Contract(contractAddress, Post.abi, signer);
             const blogDetails = await newContract.getBlogDetails();
             console.log(blogDetails);
+            return blogDetails;
         } catch (error) {
             console.log(error);
         }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../context/context";
@@ -20,15 +20,16 @@ import { ChevronDownIcon } from "@chakra-ui/icons"
 
 const Navbar = () => {
 
-    const navigate = useNavigate();
-    const {account, setAccount} = useContext(AppContext);
-    // console.log(account);
+  const navigate = useNavigate();
+  const {account, setAccount} = useContext(AppContext);
+  // console.log(account);
 
-    const handleRemoveMetamaskAccount = () => {
-        setAccount("");
-        navigate("/");
-        window.location.reload();
-    };
+  const handleRemoveMetamaskAccount = () => {
+    localStorage.clear();
+    setAccount("");
+    navigate("/");
+    window.location.reload();
+  };
 
   const verticalNav = (e) => {
     const nav = document.querySelector(".nav-links-horizontal");

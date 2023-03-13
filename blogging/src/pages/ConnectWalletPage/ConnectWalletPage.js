@@ -10,8 +10,7 @@ import BlogFactory from "../../artifacts/contracts/BlogFactory.sol/BlogFactory.j
 const ConnectWalletPage = () => {
 
     const navigate = useNavigate();
-    const { account, setAccount, setProvider, setContract, setSigner } =
-      useContext(AppContext);
+    const { account, setAccount, setProvider, setContract, setSigner } = useContext(AppContext);
 
     const loadProvider = async (provider) => {
         window.ethereum.on("chainChanged", () => {
@@ -27,10 +26,12 @@ const ConnectWalletPage = () => {
         const address = await signer.getAddress();
         await setAccount(address);
         await setSigner(signer);
-        // if(account)
-        //   console.log(account);
+        localStorage.setItem("account", address);
+        // if(account) {
+        //     console.log(account);
+        // }
 
-        let contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+        let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
         const contract = new ethers.Contract(
             contractAddress,
@@ -45,8 +46,12 @@ const ConnectWalletPage = () => {
     const connectToMetaMask = async () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         console.log(provider);
-        if(provider)
+        if(provider) {
             loadProvider(provider);
+            // if(account !== "") {
+                // localStorage.setItem("account", account);
+            // }
+        }
         else
             window.alert("Install MetaMask");
 

@@ -15,7 +15,7 @@ contract BlogFactory {
     */
     function createBlog (
         string memory _blogTitle,
-        string memory _blogTag,
+        string[] memory _blogTag,
         string memory _blogTimestamp,
         string memory _blogContent,
         string memory _blogImgHash

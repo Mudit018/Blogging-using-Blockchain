@@ -1,52 +1,67 @@
-import React from 'react'
-import { useContext, useState } from 'react';
+import React from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
-import "./AddBlogPage.css"
-import Navbar from '../../components/navbar/Navbar';
+import "./AddBlogPage.css";
+import Navbar from "../../components/navbar/Navbar";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
   FormErrorMessage,
   FormHelperText,
-  Input
+  Input,
 } from "@chakra-ui/react";
 import { Textarea } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 
 const AddBlogPage = () => {
-
   const navigate = useNavigate();
-  const { account, createBlog, provider, contract } = useContext(AppContext);
+  const { account, setAccount, createBlog, provider, contract } = useContext(AppContext);
   const initial = {
     title: "",
     tag: "",
     content: "",
     imgHash: "",
-  }
+  };
   const [blog, setBlog] = useState(initial);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
+  const toast = useToast();
+  const [loadingSuccess, setLoadingSuccess] = useState(false);
   // console.log(account);
 
-  if (account === "" || !account) {
-    navigate("/");
-    window.location.replace("/");
-  }
+  useEffect(() => {
+    console.log(localStorage.getItem("account"));
+    if (localStorage.getItem("account")) {
+      setAccount(localStorage.getItem("account"));
+    } else {
+      navigate("/");
+      window.location.replace("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
-    createBlog(blog);
-    console.log(blog);  
+    e.preventDefault();
+    console.log(blog);
+    try {
+      const data = await createBlog(blog);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  
+
   const submitFile = async (e) => {
     e.preventDefault();
-    if(file) {
+    setLoadingSuccess(true);
+    if (file) {
       try {
         const formData = new FormData();
         formData.append("file", file);
-  
+
         const resFile = await axios({
           method: "post",
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
@@ -59,21 +74,37 @@ const AddBlogPage = () => {
         });
         const imgHash = `ipfs://${resFile.data.IpfsHash}`;
         console.log(imgHash);
-        setBlog(blog => ({...blog, "imgHash": imgHash}));
-        alert("Successfully Image Uploaded");
+        setBlog((blog) => ({ ...blog, imgHash: imgHash }));
+        // alert("Successfully Image Uploaded");
         setFileName("No image selected");
         setFile(null);
         console.log(blog);
+        toast({
+          title: "Success",
+          description: "Image uploaded successfully.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        setLoadingSuccess(false);
       } catch (error) {
         console.log(error);
-        alert("Unable to upload image.");
+        // alert("Unable to upload image.");
+        toast({
+          title: "Unable to upload image",
+          description: { error },
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+        setLoadingSuccess(false);
       }
     }
-  }
+  };
 
   const handleChange = (e) => {
-    setBlog({...blog, [e.target.name]: e.target.value});
-  }
+    setBlog({ ...blog, [e.target.name]: e.target.value });
+  };
 
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object
@@ -118,8 +149,14 @@ const AddBlogPage = () => {
             onChange={retrieveFile}
           />
           <span className="textArea">Image: {fileName}</span>
-          <button type="submit" className="upload" disabled={!file} onClick={((e) => submitFile(e))}>
+          <button
+            type="submit"
+            className="upload"
+            disabled={!file}
+            onClick={(e) => submitFile(e)}
+          >
             Upload File
+            {loadingSuccess ? <Spinner speed="0.4s" /> : ""}
           </button>
 
           <Button
@@ -133,6 +170,6 @@ const AddBlogPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default AddBlogPage
+export default AddBlogPage;
