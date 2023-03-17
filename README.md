@@ -6,6 +6,7 @@ A decentralized app (DApp) by which users can create and read blogs of other use
  - Solidity
  - MetaMask
  - Hardhat
+ - Pinata
 
 ## Steps to run project
  - For [blogging folder(frontend)](./blogging)
