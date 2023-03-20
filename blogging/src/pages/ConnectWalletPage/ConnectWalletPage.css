@@ -1,5 +1,5 @@
 .ConnectWalletPage {
-  text-align: center;
+  background: #282c34;
 }
 
 .ConnectWalletPage .ConnectWalletPage-header {
@@ -8,14 +8,86 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-left: 1.3rem;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+.ConnectWalletPage .ConnectWalletPage-header h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-left: 1.3rem;
+  background: -webkit-linear-gradient(#6affaf, #5ce3fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .ConnectWalletPage .ConnectWalletPage-header .btn-self {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 75px;
+  background: linear-gradient(270deg, #6affaf 13.36%, #5ce3fe 93.72%);
+  border-radius: 11.4px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 38px;
+  color: #101012;
+  margin-top: 1.4rem;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .btn-self img {
+  margin-right: 1rem;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main .left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 2rem;
+}
+.ConnectWalletPage .ConnectWalletPage-header .main {
+  display: flex;
+  flex-direction: row;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main .left .heading {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  font-size: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 40rem;
+  font-weight: 600;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main .left .text {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main .right {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.ConnectWalletPage .ConnectWalletPage-header .main .right img {
+  max-width: 70%;
+  width: 30rem;
+  height: auto;
 }

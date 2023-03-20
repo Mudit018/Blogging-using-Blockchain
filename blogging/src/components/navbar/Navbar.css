@@ -1,13 +1,18 @@
 header {
   display: flex;
   flex-direction: row;
-  background-color: white;
-  margin-bottom: 1rem;
+  background-color: #282c34;
+  /* margin-bottom: 1rem; */
 }
 
-.logo img {
-  height: 5rem;
-  width: 11.3rem;
+.logo {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-left: 1.3rem;
+  background: -webkit-linear-gradient(#6affaf, #5ce3fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .navbar {
@@ -45,29 +50,40 @@ ul {
 .nav-links-horizontal .links-horizontal a {
   list-style-type: none;
   text-decoration: none;
-  color: #49516f;
-  font-weight: 700;
+  color: #ffffff;
+  font-weight: 500;
 }
+
+.nav-links-horizontal .links-horizontal a:hover {
+  color : #6affaf;
+}
+
+.nav-links-horizontal .links-horizontal a:active {
+  color : #ffffff;
+  border-bottom:2px solid #6affaf;
+}
+
+
 
 .nav-links-horizontal .links-horizontal li {
   margin: 1rem;
   padding-right: 1rem;
   padding-left: 1rem;
-}
-.home-span {
-  color: #2AA7FF;
-}
-.logo{
-    font-size: 3rem;
-
-}
-.logo .medi{
-    color:#2AA7FF
+  font-size: 1.8rem;
+  color: #ffffff;
 }
 
+
+
+.logo {
+  font-size: 3rem;
+}
+.logo .medi {
+  color: #2aa7ff;
+}
 
 a .login-span {
-  background-color: #2AA7FF;
+  background-color: #2aa7ff;
   color: #ffffff;
   width: 6rem;
   height: 2.4rem;
@@ -116,7 +132,7 @@ a .login-span {
     font-size: 1.5rem;
   }
   a .login-span {
-    background-color: #2AA7FF;
+    background-color: #2aa7ff;
     color: #ffffff;
     width: 6rem;
     height: 2.4rem;

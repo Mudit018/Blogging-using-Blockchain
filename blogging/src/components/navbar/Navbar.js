@@ -1,27 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AppContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+// import Dropdown from "react-bootstrap/Dropdown";
+// import DropdownButton from "react-bootstrap/DropdownButton";
 import { Avatar, AvatarBadge, AvatarGroup, Button } from "@chakra-ui/react";
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
+  // MenuItemOption,
+  // MenuGroup,
+  // MenuOptionGroup,
+  // MenuDivider,
 } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons"
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
-
   const navigate = useNavigate();
-  const {account, setAccount} = useContext(AppContext);
+  const { account, setAccount } = useContext(AppContext);
   // console.log(account);
 
   const handleRemoveMetamaskAccount = () => {
@@ -31,41 +30,28 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  const verticalNav = (e) => {
-    const nav = document.querySelector(".nav-links-horizontal");
-    nav.classList.toggle("responsive");
-    const temp = document.querySelector("#nav-link2");
-    temp.classList.toggle("open");
-  };
+  // const verticalNav = (e) => {
+  //   const nav = document.querySelector(".nav-links-horizontal");
+  //   nav.classList.toggle("responsive");
+  //   const temp = document.querySelector("#nav-link2");
+  //   temp.classList.toggle("open");
+  // };
 
   return (
     <div>
       <header>
         <div className="navbar">
           <div className="logo">
-            {/* <img src={navpic} alt="shubhwed logo" /> */}
-            <Link to="/">
-              <span className="medi">Blog</span>
-              <span className="nice">Chain</span>
-            </Link>
-            <div
-              className="icon"
-              onClick={(e) => {
-                verticalNav(e);
-              }}
-            >
-              <i
-                className="fa fa-bars"
-                style={{ fontSize: "3rem", color: "#49516f" }}
-              ></i>
-            </div>
+            <p>Blogger</p>
+            {/* <div className="icon" onClick={(e) => {verticalNav(e);}}> */}
+            {/*  <i className="fa fa-bars" style={{ fontSize: "3rem", color: "#49516f" }} ></i> */}
           </div>
           <div className="nav-links-horizontal">
             <ul
               className="links-horizontal"
               style={{ margin: "0", padding: "0" }}
             >
-              <li>
+              <li class="active">
                 <Link to="/home">
                   <span className="home-span">Home</span>
                 </Link>
@@ -78,9 +64,15 @@ const Navbar = () => {
                   <>
                     <p className="profile">
                       <Menu maxW="10px">
-                        <MenuButton as={Button} style={{color: "black"}} rightIcon={<ChevronDownIcon style={{color: "black"}}/>}>
+                        <MenuButton
+                          as={Button}
+                          style={{ color: "black" }}
+                          rightIcon={
+                            <ChevronDownIcon style={{ color: "black" }} />
+                          }
+                        >
                           {/* <Avatar size="md" name={account} /> */}
-                            {account}
+                          {account}
                         </MenuButton>
                         <MenuList maxW="inherit">
                           <MenuItem maxW="inherit">
