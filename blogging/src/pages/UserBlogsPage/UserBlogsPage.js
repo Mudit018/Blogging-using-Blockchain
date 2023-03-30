@@ -7,7 +7,7 @@ import { AppContext } from '../../context/context';
 const UserBlogsPage = () => {
 
     const navigate = useNavigate();
-    const { account, setAccount } = useContext(AppContext);
+    const { account, setAccount, contract } = useContext(AppContext);
     // console.log(account);
 
     useEffect(() => {

@@ -50,22 +50,6 @@ contract Blog {
     //     likersAddresses.push(msg.sender);
     // }
 
-    // function getBlogAuthor() public view returns (address) {
-    //     return blogAuthor;
-    // }
-    // function getBlogTitle() public view returns (string memory) {
-    //     return blogTitle;
-    // }
-    // function getBlogTag() public view returns (string memory) {
-    //     return blogTag;
-    // }
-    // function getBlogTimeStamp() public view returns (string memory) {
-    //     return blogTimeStamp;
-    // }
-    // function getBlogContent() public view returns (string memory) {
-    //     return blogContent;
-    // }
-
     function getBlogDetails() public view returns (
             uint,
             address,
@@ -88,5 +72,4 @@ contract Blog {
             blogLikeCount
         );
     }
-
 }

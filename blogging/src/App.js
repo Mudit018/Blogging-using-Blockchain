@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AllBlogsPage from "./pages/AllBlogsPage/AllBlogsPage";
 import AddBlogPage from "./pages/AddBlogPage/AddBlogPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SingleBlogPage from "./pages/SingleBlogPage/SingleBlogPage";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +23,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/getallblogs",
-    element: <AllBlogsPage />,
+    element: <AllBlogsPage />
   },
   {
     path: "/addblog",
-    element: <AddBlogPage />,
+    element: <AddBlogPage />
   },
+  {
+    path: "/blog/:id",
+    element: <SingleBlogPage />
+  }
 ]);
 
 function App() {

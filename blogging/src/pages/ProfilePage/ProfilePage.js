@@ -4,6 +4,7 @@ import { AppContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import MyBlogs from '../../components/MyBlogs/MyBlogs';
+import BlogCard from '../../components/blogCard/BlogCard';
 
 const ProfilePage = () => {
 
@@ -22,16 +23,15 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className="ProfilePage">
+    <>
       <Navbar></Navbar>
-        <div className="heading">
-            ProfilePage
-        </div>
-        <div className="PersonalBlogs">
-            { account }
-        </div>
-        <MyBlogs></MyBlogs>
-    </div>
+      <div className="ProfilePage">
+          <div className="heading">
+              My Blogs
+          </div>
+          <MyBlogs />
+      </div>
+    </>
   )
 }
 

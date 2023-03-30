@@ -6,3 +6,27 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+input[type="text"]::placeholder {
+  color: #ffffff;
+}
+
+.search-bar {
+  background-color: #3e4746;
+  border: 1.5px solid #5ce3fe;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-right: 2rem;
+  margin: 2rem;
+}
+
+.search-bar input {
+  background-color: #3e4746;
+  font-size: 1.3rem;
+  margin: 1rem;
+  width: -webkit-fill-available;
+  outline: none;
+}

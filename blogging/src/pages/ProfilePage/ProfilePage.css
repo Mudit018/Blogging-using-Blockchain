@@ -6,3 +6,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.ProfilePage .heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background: -webkit-linear-gradient(#6affaf, #5ce3fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -121,7 +121,6 @@ const AddBlogPage = () => {
   return (
     <div className="AddBlogPage">
       <Navbar></Navbar>
-      AddBlogPage
       <div className="form">
         <FormControl className="details">
           <FormLabel>Title</FormLabel>

@@ -1,23 +1,23 @@
 import React from 'react'
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context/context";
+import BlogCard from '../blogCard/BlogCard';
 
 const MyBlogs = () => {
 
-    const { account, getUploadedBlogsByUser } = useContext(AppContext);
+    const { account, getUploadedBlogsByUser, contract } = useContext(AppContext);
     const [myBlogs, setMyBlogs] = useState([]);
     
     useEffect(() => {
       
         const getMyBlogs = async () => {
-            const myAllBlogs = await getUploadedBlogsByUser(account);
+            const myAllBlogs = await getUploadedBlogsByUser(contract, account);
             console.log(myAllBlogs);
-            setMyBlogs(myAllBlogs);
+            await setMyBlogs(myAllBlogs);
             // console.log(JSON.parse(localStorage.getItem(("allblogs"))));
         }
         getMyBlogs();
     }, [])
-    
 
     // const handleClick = async () => {
     //     const myAllBlogs = await getUploadedBlogsByUser(account);
@@ -26,10 +26,12 @@ const MyBlogs = () => {
 
     return (
       <div className="my-blogs">
-        My Blogs
-        {/* <div className="button" onClick={() => handleClick()}>
-          <button>My Blog</button>
-        </div> */}
+        {myBlogs?.length > 0
+        ? myBlogs?.map((blog) => {
+            console.log(blog)
+            return <BlogCard blog={blog} />;
+          })
+        : "no blogs to show"}
       </div>
     );
 }

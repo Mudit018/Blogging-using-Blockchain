@@ -33,17 +33,18 @@ const ConnectWalletPage = () => {
     //     console.log(account);
     // }
 
-    let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    let contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
     const contract = new ethers.Contract(
       contractAddress,
       BlogFactory.abi,
       signer
     );
-    // console.log(contract);
+    console.log(contract);
     await setContract(contract);
+    
     await setProvider(provider);
-    navigate("/home")
+    navigate("/home");
   };
 
   const connectToMetaMask = async () => {
@@ -54,10 +55,10 @@ const ConnectWalletPage = () => {
       // if(account !== "") {
       // localStorage.setItem("account", account);
       // }
-    //   if(account !== "") {
-        //   }  
+      //   if(account !== "") {
+      //   }
     } else {
-        window.alert("Install MetaMask");
+      window.alert("Install MetaMask");
     }
 
     // try {

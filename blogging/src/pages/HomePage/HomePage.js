@@ -31,7 +31,7 @@ const HomePage = () => {
         <Link to="/addblog">
           <img src={add} alt="Add New Blogs" />
         </Link>
-        <Link to="/getallblogs">
+        <Link to="/profile">
           <img src={view} alt="View My Blogs" />
         </Link>
       </div>

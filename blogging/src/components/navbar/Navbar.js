@@ -75,12 +75,12 @@ const Navbar = () => {
                           {account}
                         </MenuButton>
                         <MenuList maxW="inherit">
-                          <MenuItem maxW="inherit">
+                          {/* <MenuItem maxW="inherit">
                             <Link to="/profile">My Blogs</Link>
                           </MenuItem>
                           <MenuItem maxW="inherit">
                             <Link to="/addBlog">Add Blog</Link>
-                          </MenuItem>
+                          </MenuItem> */}
                           <MenuItem
                             maxW="inherit"
                             onClick={() => {
