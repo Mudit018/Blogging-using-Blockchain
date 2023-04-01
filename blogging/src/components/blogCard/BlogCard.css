@@ -65,7 +65,7 @@
   flex-wrap: wrap;
 }
 
-.modal-heading {
+.card-container .modal-heading {
   background: -webkit-linear-gradient(#5de5f8, #6affaf);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -73,8 +73,13 @@
   font-size: 3rem !important;
 } 
 
-.content {
+.card-container .content {
   max-width: 80vw !important;
+}
+
+.card-container .read-more:hover{
+  /* background: red !important; */
+  color: #6affaf !important;
 }
 
 @media screen and (max-width: 768px) {

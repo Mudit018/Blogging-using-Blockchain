@@ -20,14 +20,14 @@ const BlogCard = ({ blog }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const findDate = () => {
-    const date = new Date(Number(blog[4]))
+    const date = new Date(Number(blog.blogDetails[4]))
     console.log(date.toUTCString());
     return date.toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
   }
 
   const getImgUrl = () => {
-    if(blog[6]) {
-      return `https://gateway.pinata.cloud/ipfs/${blog[6].substring(6)}`;
+    if (blog.blogDetails[6]) {
+      return `https://gateway.pinata.cloud/ipfs/${blog.blogDetails[6].substring(6)}`;
     } return BlogImg;
   }
 
@@ -39,22 +39,21 @@ const BlogCard = ({ blog }) => {
           <img src={getImgUrl()} alt="Blog" />
         </div>
         <div className="card-child card-right-container">
-          <div className="blog-heading">{blog[2]}</div>
-          <div className="blog-author">{blog[1]}</div>
+          <div className="blog-heading">{blog.blogDetails[2]}</div>
+          <div className="blog-author">{blog.blogDetails[1]}</div>
           <div className="blog-date">{findDate()}</div>
-          <div className="blog-content">{blog[5]}</div>
+          <div className="blog-content">{blog.blogDetails[5]}</div>
           <div className="blog-tags">
-            {blog[3]?.map((tag, i) => {
+            {blog.blogDetails[3]?.map((tag, i) => {
               return (
                 <div
                   style={{
-                    backgroundImage:
-                      "linear-gradient(88.93deg, #5CE3FE, #6AFFAF)",
+                    backgroundImage: "linear-gradient(88.93deg, #5CE3FE, #6AFFAF)",
                     backgroundClip: "text",
                     borderRadius: "25px",
                     padding: "0.4rem  2rem 0.4rem 2rem",
                     color: "black",
-                    fontSize: "15px",
+                    fontSize: "15px"
                   }}
                 >
                   {tag}
@@ -62,25 +61,28 @@ const BlogCard = ({ blog }) => {
               );
             })}
           </div>
-          {/* <Link to={`/blog/${blog?.id}`}> */}
-          <Button
-            style={{
-              background: "none",
-              fontSize: "1.5rem",
-              margin: "0",
-              padding: "0",
-            }}
-            onClick={onOpen}
-          >
-            Read More
-          </Button>
-          {/* </Link> */}
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Link to={`/blog/${blog?.blog?.address}`}>
+            <Button
+              style={{
+                background: "none",
+                fontSize: "1.5rem",
+                margin: "0",
+                padding: "0",
+              }}
+              onClick={onOpen}
+              className="read-more"
+            >
+              Read More
+            </Button>
+          </Link>
+          {/* <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent style={{ background: "#3e4746" }} className="content">
               <ModalHeader className="modal-heading">{blog[2]}</ModalHeader>
               <ModalCloseButton color={"white"} />
-              <ModalBody color={"white"} style={{fontSize: "1.5rem"}}>{blog[5]}</ModalBody>
+              <ModalBody color={"white"} style={{ fontSize: "1.5rem" }}>
+                {blog[5]}
+              </ModalBody>
 
               <ModalFooter>
                 <Button
@@ -91,10 +93,9 @@ const BlogCard = ({ blog }) => {
                 >
                   Close
                 </Button>
-                {/* <Button variant="ghost">Secondary Action</Button> */}
               </ModalFooter>
             </ModalContent>
-          </Modal>
+          </Modal> */}
         </div>
       </div>
     </div>

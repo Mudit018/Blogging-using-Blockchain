@@ -44,15 +44,15 @@ const AllBlogsPage = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   // console.log(account);
 
-  useEffect(() => {
-    console.log(localStorage.getItem("account"));
-    if (localStorage.getItem("account")) {
-      setAccount(localStorage.getItem("account"));
-    } else {
-      navigate("/");
-      window.location.replace("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log(localStorage.getItem("account"));
+  //   if (localStorage.getItem("account")) {
+  //     setAccount(localStorage.getItem("account"));
+  //   } else {
+  //     navigate("/");
+  //     window.location.replace("/");
+  //   }
+  // }, []);
 
   useEffect(() => {
     const allBlogs = async () => {
@@ -60,7 +60,7 @@ const AllBlogsPage = () => {
       const data = await getAllBlogs(contract);
       console.log(data);
       await setAllBlogs(data);
-      localStorage.setItem("allblogs", JSON.stringify(data));
+      // localStorage.setItem("allblogs", JSON.stringify(data));
     };
     allBlogs();
   }, []);

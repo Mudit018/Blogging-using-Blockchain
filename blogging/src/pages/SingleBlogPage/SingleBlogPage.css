@@ -5,4 +5,41 @@
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 2rem;
+}
+
+.SingleBlogPage .heading {
+  font-weight: 500;
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.SingleBlogPage .tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.SingleBlogPage .img {
+  /* max-width: 100%;
+  height: auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SingleBlogPage .img img {
+  max-width: 100%;
+}
+
+.SingleBlogPage .content {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  /* padding: 1.7rem; */
+  text-align: justify;
 }

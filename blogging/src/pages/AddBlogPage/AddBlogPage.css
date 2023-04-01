@@ -7,59 +7,113 @@
   color: white;
 }
 
+.AddBlogPage .main-heading {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-left: 1.3rem;
+  background: -webkit-linear-gradient(#6affaf, #5ce3fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.AddBlogPage .heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
 .AddBlogPage .form {
   margin: 3rem;
   display: flex;
 }
 
 .AddBlogPage .form .details {
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.AddBlogPage .form .details input[type="text"],
+textarea {
+  background: rgba(255, 255, 255, 0.08);
+  border: 3px solid #6affaf;
+  border-radius: 10px;
+}
+
+.AddBlogPage .form .details ::placeholder {
+  color: grey;
+  font-size: 0.9rem;
 }
 
 input[type="file"] {
   display: none;
 }
 
-.choose {
+.AddBlogPage .choose {
   background-color: initial;
-  background-image: linear-gradient(-180deg, #5aff15, #00b712);
+  /* background-image: linear-gradient(-180deg, #5aff15, #00b712); */
   border-radius: 6px;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 6px;
   margin-right: 10px;
+  font-size: 1rem;
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
 }
-.choose:hover {
+
+/* .AddBlogPage .choose:hover {
   box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
-}
-.textArea {
+} */
+
+.AddBlogPage .textArea {
   color: white;
 }
 
-.upload {
-  border: 1px solid #13aa52;
-  background-color: #13aa52;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 6px;
-  margin-left: 10px;
-}
-
-.upload:hover {
+.AddBlogPage .upload:hover {
   border: 1px solid #13aa52;
   background-color: #a5efc1;
   color: #ffffff;
   padding: 5px 10px;
 }
 
-.upload:disabled,
-.upload[disabled] {
+.AddBlogPage .upload:disabled,
+.AddBlogPage .upload[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+.AddBlogPage .form .details .choose-img {
+  display: flex;
+  flex-direction: row;
+}
+
+.AddBlogPage .form .details .upload-img {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.AddBlogPage .form .details .upload-img .textArea {
+  font-size: 1.5rem;
+}
+
+.AddBlogPage .form .details .upload-img .upload {
+  border: none;
+  background: none;
+  color: rgba(106, 255, 175, 0.7);
+  margin-left: 10px;
+  font-size: 1.2rem;
+  padding: 0.6rem;
 }

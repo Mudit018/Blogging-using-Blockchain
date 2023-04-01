@@ -38,8 +38,12 @@ const Context = ({ children }) => {
           signer
         );
         const blogDetails = await newContract.getBlogDetails();
-        console.log(blogDetails);
-        return blogDetails;
+        console.log(blogDetails, newContract.address);
+        const obj = {
+          blogDetails: blogDetails,
+          blog: newContract
+        }
+        return obj;
       } else {
         console.log("not possible");
       }
@@ -57,8 +61,9 @@ const Context = ({ children }) => {
       for (let index = 0; index < blogs?.length; index++) {
         const newContract = new ethers.Contract(blogs[index], Post.abi, signer);
         const blogDetails = await newContract.getBlogDetails();
-        blogArray.push(blogDetails);
+        blogArray.push({blogDetails: blogDetails, blog: newContract});
       }
+      console.log(blogArray);
       return blogArray;
     } catch (error) {
       console.log(error);
@@ -78,7 +83,7 @@ const Context = ({ children }) => {
           signer
         );
         const myBlogDetails = await newContract.getBlogDetails();
-        myBlogArray.push(myBlogDetails);
+        myBlogArray.push({blogDetails: myBlogDetails, blog: newContract});
       }
       return myBlogArray;
     } catch (error) {
@@ -90,9 +95,9 @@ const Context = ({ children }) => {
     if (address === "") return;
 
     try {
-      const data = await getUploadedBlogsByUser(contract, address);
+      console.log(contract, address);
+      const data = await address.id.getBlogDetails(); 
       console.log(data);
-      // return blogDetails
     } catch (error) {
       console.log(error);
     }
