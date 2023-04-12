@@ -20,8 +20,7 @@ import upload_file from "../../images/upload_file.png";
 
 const AddBlogPage = () => {
   const navigate = useNavigate();
-  const { account, setAccount, createBlog, provider, contract } =
-    useContext(AppContext);
+  const { account, setAccount, createBlog, provider, contract } = useContext(AppContext);
   const initial = {
     title: "",
     tag: "",
@@ -35,22 +34,22 @@ const AddBlogPage = () => {
   const [loadingSuccess, setLoadingSuccess] = useState(false);
   // console.log(account);
 
-  // useEffect(() => {
-  //   console.log(localStorage.getItem("account"));
-  //   if (localStorage.getItem("account")) {
-  //     setAccount(localStorage.getItem("account"));
-  //   } else {
-  //     navigate("/");
-  //     window.location.replace("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    console.log(localStorage.getItem("account"));
+    if (localStorage.getItem("account")) {
+      setAccount(localStorage.getItem("account"));
+    } else {
+      navigate("/");
+      window.location.replace("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(blog);
+    // console.log(blog);
     try {
       const data = await createBlog(blog);
-      console.log(data);
+      // console.log(data);
       toast({
         title: "Success",
         description: "Blog added successfully.",
@@ -58,6 +57,8 @@ const AddBlogPage = () => {
         duration: 5000,
         isClosable: true,
       });
+      setFileName("No image selected");
+      setFile(null);
       navigate("/home");
     } catch (error) {
       console.log(error);
@@ -85,18 +86,16 @@ const AddBlogPage = () => {
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           headers: {
-            pinata_api_key: `5716f55588629da9f107`,
-            pinata_secret_api_key: `a0021eab4b86b81a3fd74d7572b342a979663d52b0529ccd712039ab1f048d8b`,
+            pinata_api_key: `4aa8c7fb3d1767998705`,
+            pinata_secret_api_key: `fe5be9f0c26e28003fc3a4a76342a1410db9142d85186238b86a75d30742ae05`,
             "Content-Type": "multipart/form-data",
           },
         });
         const imgHash = `ipfs://${resFile.data.IpfsHash}`;
         console.log(imgHash);
         setBlog((blog) => ({ ...blog, imgHash: imgHash }));
-        // alert("Successfully Image Uploaded");
-        setFileName("No image selected");
-        setFile(null);
-        console.log(blog);
+        // setFileName("No image selected");
+        // setFile(null);
         toast({
           title: "Success",
           description: "Image uploaded successfully.",
@@ -126,7 +125,7 @@ const AddBlogPage = () => {
 
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object
-    console.log(data);
+    // console.log(data);
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(data);
     reader.onloadend = () => {

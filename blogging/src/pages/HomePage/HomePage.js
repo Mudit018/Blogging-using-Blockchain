@@ -14,15 +14,15 @@ const HomePage = () => {
   const { account, setAccount } = useContext(AppContext);
   // console.log(account);
 
-  // useEffect(() => {
-  //   console.log(localStorage.getItem("account"));
-  //   if (localStorage.getItem("account")) {
-  //     setAccount(localStorage.getItem("account"));
-  //   } else {
-  //     navigate("/");
-  //     window.location.replace("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    console.log(localStorage.getItem("account"));
+    if (localStorage.getItem("account")) {
+      setAccount(localStorage.getItem("account"));
+    } else {
+      navigate("/");
+      window.location.replace("/");
+    }
+  }, []);
 
   return (
     <>

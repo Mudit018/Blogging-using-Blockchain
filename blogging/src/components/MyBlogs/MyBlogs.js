@@ -7,29 +7,24 @@ const MyBlogs = () => {
 
     const { account, getUploadedBlogsByUser, contract } = useContext(AppContext);
     const [myBlogs, setMyBlogs] = useState([]);
-    
+    const [edit, setEdit] = useState(true);
     useEffect(() => {
       
         const getMyBlogs = async () => {
             const myAllBlogs = await getUploadedBlogsByUser(contract, account);
             console.log(myAllBlogs);
+            myAllBlogs?.reverse();
             await setMyBlogs(myAllBlogs);
             // console.log(JSON.parse(localStorage.getItem(("allblogs"))));
         }
         getMyBlogs();
     }, [])
 
-    // const handleClick = async () => {
-    //     const myAllBlogs = await getUploadedBlogsByUser(account);
-    //     // console.log(myAllBlogs);
-    // }
-
     return (
       <div className="my-blogs">
         {myBlogs?.length > 0
         ? myBlogs?.map((blog) => {
-            console.log(blog)
-            return <BlogCard blog={blog} />;
+            return <BlogCard blog={blog} edit={edit} account={account}/>;
           })
         : "no blogs to show"}
       </div>

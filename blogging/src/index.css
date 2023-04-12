@@ -6,6 +6,7 @@ body {
   font-family: "Sora", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  caret-color: #6affaf;
 }
 
 /* code {

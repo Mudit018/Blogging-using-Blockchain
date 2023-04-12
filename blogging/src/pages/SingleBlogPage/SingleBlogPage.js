@@ -19,32 +19,32 @@ import Default_image from "../../images/3.png";
 
 const SingleBlogPage = () => {
   const navigate = useNavigate();
-  const { account, contract, setAccount, createBlog, getUploadedBlogsByUser } =
-    useContext(AppContext);
+  const { account, contract, setAccount, createBlog, getUploadedBlogsByUser } = useContext(AppContext);
   // console.log(account);
 
-  const blogAddress = useParams();
-  console.log(blogAddress);
+  const {userAccount, blogAddress} = useParams();
+  console.log(userAccount, blogAddress);
   const [data, setData] = useState();
-  // useEffect(() => {
-  //   console.log(localStorage.getItem("account"));
-  //   if (localStorage.getItem("account")) {
-  //     setAccount(localStorage.getItem("account"));
-  //   } else {
-  //     navigate("/");
-  //     window.location.replace("/");
-  //   }
-  // }, []);
+  
+  useEffect(() => {
+    console.log(localStorage.getItem("account"));
+    if (localStorage.getItem("account")) {
+      setAccount(localStorage.getItem("account"));
+    } else {
+      navigate("/");
+      window.location.replace("/");
+    }
+  }, []);
 
   useEffect(() => {
     const getBlogDetails = (blog) => {
       // console.log(blog);
-      if (blog.blog.address === blogAddress.id) return blog.blogDetails;
+      if (blog?.blog?.address === blogAddress) return blog.blogDetails;
       // return "";
     };
     const getBlog = async () => {
-      const blogData = await getUploadedBlogsByUser(contract, account);
-      // console.log(blogData);
+      const blogData = await getUploadedBlogsByUser(contract, userAccount);
+      console.log(blogData);
       const blog = blogData.filter(getBlogDetails);
       console.log(blog);
       setData(blog[0]);

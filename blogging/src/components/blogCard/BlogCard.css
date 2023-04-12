@@ -24,6 +24,7 @@
 .card-container .card-right-container {
   /* margin-right: 2rem; */
   flex: 1;
+  max-width: 65%;
 }
 
 .card-container .card-left-container img {
@@ -32,10 +33,16 @@
   display: block;
 }
 
+.card-container .card-right-container .same {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .card-container .card-right-container .blog-heading {
   font-weight: 500;
   font-size: 2.5rem;
-  margin-bottom: 0.8rem;
 }
 
 .card-container .card-right-container .blog-content {
@@ -65,6 +72,12 @@
   flex-wrap: wrap;
 }
 
+/* .card-container .card-right-container .more-option {
+  display: flex;
+  flex-direction: row;
+  gap : 1rem;
+} */
+
 .card-container .modal-heading {
   background: -webkit-linear-gradient(#5de5f8, #6affaf);
   -webkit-background-clip: text;
@@ -92,4 +105,59 @@
     width: 100%;
     max-width: 100%;
   }
+}
+
+.like-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-modal-content {
+  position: relative;
+  /* background-color: white; */
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 5px;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.like-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.like-button:hover {
+  background-color: #ddd;
+}
+
+.like-type {
+  display: flex;
+  gap: .2rem;
+  align-items: center;
+}
+
+.like-type .like-number {
+  font-size: 1.2rem
 }

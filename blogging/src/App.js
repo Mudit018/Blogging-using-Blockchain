@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: <AddBlogPage />
   },
   {
-    path: "/blog/:id",
+    path: "/blog/:userAccount/:blogAddress",
     element: <SingleBlogPage />
   }
 ]);

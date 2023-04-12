@@ -27,9 +27,9 @@ const Context = ({ children }) => {
         blog?.imgHash
       );
       const data = await txn.wait();
-      console.log(data);
+      // console.log(data);
       const blogArray = await contract.getUploadedBlogs();
-      console.log(blogArray);
+      // console.log(blogArray);
       if (blogArray) {
         let contractAddress = blogArray[blogArray.length - 1];
         const newContract = new ethers.Contract(
@@ -38,7 +38,7 @@ const Context = ({ children }) => {
           signer
         );
         const blogDetails = await newContract.getBlogDetails();
-        console.log(blogDetails, newContract.address);
+        // console.log(blogDetails, newContract.address);
         const obj = {
           blogDetails: blogDetails,
           blog: newContract
@@ -67,6 +67,7 @@ const Context = ({ children }) => {
       return blogArray;
     } catch (error) {
       console.log(error);
+      return error;
     }
   };
 
@@ -74,7 +75,7 @@ const Context = ({ children }) => {
     if (account1 === "") return;
     try {
       const myBlogs = await contract.getUploadedBlogsByUser(account1);
-      console.log(myBlogs);
+      // console.log(myBlogs);
       let myBlogArray = [];
       for (let index = 0; index < myBlogs.length; index++) {
         const newContract = new ethers.Contract(
@@ -103,6 +104,27 @@ const Context = ({ children }) => {
     }
   };
 
+  const updateBlog = async (blog, title, tag, content, imgHash) => { 
+    console.log(blog);
+    console.log(typeof(tag));
+    console.log(content);
+    console.log(imgHash);
+    const tagArr =tag.split(",").map((t) => t.trim());
+    console.log(tagArr);
+    const txn = await blog.updateBlogDetails(title, tagArr, content, imgHash);
+    const data = await txn.wait();
+    console.log(data);
+    return data;
+  }
+
+  const updateLike = async (blog, account) => {
+    console.log(blog, account);
+    const txn = await blog.likePost();
+    const data = await txn.wait();
+    // console.log(data);
+    return data;
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -118,6 +140,8 @@ const Context = ({ children }) => {
         getUploadedBlogsByUser,
         getAllBlogs,
         getBlogbyAddress,
+        updateBlog,
+        updateLike
       }}
     >
       {children}
